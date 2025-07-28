@@ -9,10 +9,22 @@ import datetime
 
 
 def main():
-    options = ["clock-IN", "clock-OUT", "Project Switch"]
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    options = ["admin","dev"]    
     terminalMenu = TerminalMenu(options)
     menuEntryIndex = terminalMenu.show()
-    print(menuEntryIndex)
+    match menuEntryIndex:
+        case 0:
+            Options=["Add User","Remove User", "Export Data CSV","Exit"]
+            Menu = TerminalMenu(Options)
+            Choice = Menu.show()
+        case 1:
+            Options = ["clock IN", "clock OUT", "Project Switch", "Exit"]
+            Menu = TerminalMenu(Options)
+            Choice = Menu.show()
+
+    
+    
     
 
 
