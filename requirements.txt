@@ -1,0 +1,6 @@
+click
+art
+colorama
+simple-term-menu
+pymongo
+python-dotenv
