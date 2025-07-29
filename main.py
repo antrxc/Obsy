@@ -4,7 +4,7 @@ from colorama import Fore, Style
 from simple_term_menu import TerminalMenu
 import os
 import datetime
-#from db.model import User, Role, addUser
+from db.model import User, Role, addUser
 
 
 
