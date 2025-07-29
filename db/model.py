@@ -66,11 +66,10 @@ addHours(project:Project, hours:int) -> bool
 '''
 
 class Project:
-    def __init__(self, name:str, domain:str):
+    def __init__(self, name:str, domain:str, hours:int = 0, status:str = "initiated"):
         self.name = name
         self.domain = domain
-        self.hours = 0
-        self.status = "initiated"
+    
 
     def to_dict(self) -> dict:
         return {
@@ -81,13 +80,29 @@ class Project:
         }
 
     @classmethod
-    def from_dict(cls, data: dict) -> "User":
+    def from_dict(cls, data: dict) -> "Project":
         return cls(
             name=data.get("name", ""),
             domain=data.get("domain", ""),
-            hours=data.get("hours", "")
-            status=data.get("status")
+            hours=data.get("hours", ""),
+            status=data.get("status","")
         )
+
+    @property
+    def status(self):
+        raise NotImplementedError
+
+    @status.setter
+    def status(self, value):
+        raise NotImplementedError
+
+    @property
+    def hours(self):
+        raise NotImplementedError
+
+    @hours.setter
+    def hours(self, value):
+        raise NotImplementedError
 
     
 #User CRUD functions 
@@ -101,7 +116,7 @@ def addUser(user:User)->bool:
 
 def removeUser(user:User)->bool:
     res = UserData.delete_one({"userID":user.userID})
-    return res.delete_count > 0
+    return res.delete_count > 0 # type: ignore
 
 
 
