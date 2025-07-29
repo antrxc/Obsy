@@ -1,8 +1,9 @@
 '''
-Imports UserData (collection object) from connection.py.
-has classes: User
-             Project
-             Role(Enum)
+imports for the model.py file
+Defines User and Project classes with helper functions for MongoDB operations.
+Defines Role enum for user roles.
+Defines functions for adding and removing users and projects.
+Defines functions for checking user roles.
 '''
 
 from enum import Enum
@@ -24,13 +25,8 @@ class Role(Enum):
         
 '''
 Defines User class and functions: 
-addUser(user)
-removeUser(user)
-
-
-has helper functions for User -> Dict conversion and vice versa for use with MongoDB
-has helper functions for Roles -> str conversion and vice versa for user with MongoDB
-All DB operations go through the shared UserData.
+addUser(user:User) -> bool
+removeUser(user:User) -> bool
 
 TODO add functionalities: ListUsers
 
@@ -62,7 +58,10 @@ class User:
 
 
 '''
-Defines Project class with helper functions
+Defines Project class and functions:
+addProject(project:Project) -> bool
+statusUpdate(project:Project) -> bool
+addHours(project:Project, hours:int) -> bool
 
 '''
 
@@ -116,5 +115,16 @@ def addProject(project:Project)->bool:
 
 
 def statusUpdate(project:Project)->bool:
-    ProjectData.update_one({"status":project.status})
-    return res.delete_count > 0
+    res = ProjectData.update_one(
+        {"name": project.name}, 
+        {"$set": {"status": project.status}}
+    )
+    return res.modified_count > 0
+
+def addHours(project:Project, hours:int)-> bool:
+    project.hours += hours
+    res = ProjectData.update_one(
+        {"name": project.name}, 
+        {"$inc": {"hours": project.hours}}
+    )
+    return res.modified_count > 0
