@@ -1,4 +1,4 @@
- '''
+'''
 Access control:
 
 Admin -> can access anything and can make changes to anything
@@ -10,12 +10,26 @@ isAdmin(user:User) -> bool
 isDev(user:User) -> bool
 '''
 
-def isAdmin(user:User)->bool:
-    if (user.role == ADMIN):
+from db.model import User, Role
+
+
+def isAdmin(user: User) -> bool:
+    if user.role == Role.ADMIN:
         return True
     return False
 
-def isDev(user:User)->bool:
-    if (user.role == DEV):
+def isDev(user: User) -> bool:
+    if user.role == Role.DEV:
         return True
+    return False
+
+def hasPermission(user: User, action: str) -> bool:
+    """Check if user has permission for specific action"""
+    if isAdmin(user):
+        return True  # Admin can do everything
+    
+    if isDev(user):
+        allowed_actions = ['clock_in', 'clock_out', 'view_logs', 'switch_project']
+        return action in allowed_actions
+    
     return False

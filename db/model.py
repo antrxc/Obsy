@@ -69,6 +69,8 @@ class Project:
     def __init__(self, name:str, domain:str, hours:int = 0, status:str = "initiated"):
         self.name = name
         self.domain = domain
+        self.hours = hours
+        self.status = status
     
 
     def to_dict(self) -> dict:
@@ -81,28 +83,13 @@ class Project:
 
     @classmethod
     def from_dict(cls, data: dict) -> "Project":
-        return cls(
+        project = cls(
             name=data.get("name", ""),
-            domain=data.get("domain", ""),
-            hours=data.get("hours", ""),
-            status=data.get("status","")
+            domain=data.get("domain", "")
         )
-
-    @property
-    def status(self):
-        raise NotImplementedError
-
-    @status.setter
-    def status(self, value):
-        raise NotImplementedError
-
-    @property
-    def hours(self):
-        raise NotImplementedError
-
-    @hours.setter
-    def hours(self, value):
-        raise NotImplementedError
+        project.hours = data.get("hours", 0)
+        project.status = data.get("status", "initiated")
+        return project
 
     
 #User CRUD functions 

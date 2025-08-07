@@ -1,6 +1,6 @@
-click
-art
-colorama
-simple-term-menu
-pymongo
-python-dotenv
+click>=8.0.0
+art>=5.0
+colorama>=0.4.4
+simple-term-menu>=1.6.0
+pymongo>=4.0.0
+python-dotenv>=0.19.0

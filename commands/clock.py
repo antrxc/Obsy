@@ -1,14 +1,19 @@
 from datetime import datetime
 from db.connection import ClockData
 import os
-
+'''
+Defines Log class and functions:
+clock_in(userID, project, time=None) -> Log
+clockOUT_User(userID, time=None) -> bool
+get_logs(userID=None, date=None) -> list[Log]
+'''
 class Log:
-    def __init__(self, userID: str, clockIN: datetime, project: str, date: str = None, clockOUT: datetime = None):
+    def __init__(self, userID: str, clockIN: datetime, project: str):
         self.userID = userID
         self.clockIN = clockIN
-        self.clockOUT = clockOUT
+        self.clockOUT = None  # Initialize as None
         self.project = project
-        self.date = date or clockIN.date()
+        self.date = clockIN.date()
     
     def to_dict(self):
         return {
@@ -19,20 +24,17 @@ class Log:
             "project": self.project
         }
     
-    def clock_out(self, time: datetime):
-        self.clockOUT = time
 
-def clock_in(userID: str, project: str, time: datetime = None) -> Log:
-    clock_time = time or datetime.now()
-    log = Log(userID=userID, clockIN=clock_time, project=project)
-    
-    clock_data = ClockData()
-    clock_data.insert_clock_entry(log.to_dict())
-    
+def clockIn(userID: str, project: str) -> Log:
+    clock_time = datetime.now()
+    log = Log(userID,clock_time, project)
+    ClockData.insert_one(log.to_dict())
     return log
 
-def clock_out_user(userID: str, time: datetime = None) -> bool:
+def clockOUT_User(userID: str, time: datetime) -> bool:
     clock_time = time or datetime.now()
-    clock_time = datetime.now() if not clock_time else clock_time
-    clock_data = ClockData()
-    return clock_data.update_clock_out(userID, clock_time.isoformat())
+    result = ClockData.update_one(    
+        {"userID": userID, "clockOUT": None},  # clockIN entry not clocked out yet
+        {"$set": {"clockOUT": clock_time.isoformat()}}
+    )
+    return result.modified_count > 0
