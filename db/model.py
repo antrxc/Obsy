@@ -28,7 +28,6 @@ Defines User class and functions:
 addUser(user:User) -> bool
 removeUser(user:User) -> bool
 
-TODO add functionalities: ListUsers
 
 '''
 
