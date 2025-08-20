@@ -1,210 +1,382 @@
-# Login System - axtrLabs
+<div align="center">
 
-A terminal-based employee time tracking and login system with MongoDB integration.
 
-## Features
+<h1 align="center">🦉 Obsy</h1>
+<h3 align="center">Observe your crowd</h3>
 
-- **Time Tracking**: Clock in/out functionality for employees
-- **User Management**: Support for different user roles (Admin, Employee, Manager)
-- **Terminal Interface**: Interactive menu-driven CLI using simple-term-menu
-- **MongoDB Integration**: Persistent data storage for time logs and user data
-- **Project Switching**: Support for switching between different projects
+<p align="center">
+<b>A modern, terminal-based employee time tracking and observation system with cloud integration</b><br>
+<br>
+[![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://python.org/downloads/)
+[![MongoDB](https://img.shields.io/badge/database-MongoDB-green.svg)](https://mongodb.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+</p>
 
-## Project Structure
+<p align="center">
+<img src="https://via.placeholder.com/800x400/1a1a1a/00ff00?text=Obsy+Demo" alt="Obsy Demo"/>
+</p>
 
-```
-login-sys/
-├── main.py              # Main application entry point
-├── requirements.txt     # Python dependencies
-├── README.md           # This file
-├── commands/           # Command modules
-│   ├── __init__.py
-│   ├── abac.py         # Access control (placeholder)
-│   ├── clock.py        # Clock in/out functionality
-│   └── export.py       # Data export functionality (placeholder)
-├── db/                 # Database models and utilities
-│   ├── __init__.py
-│   └── model.py        # User model and database operations
-└── utils/              # Utility functions
-    └── __init__.py
-```
+<p align="center"><i>Beautiful terminal interface for observing and tracking your team</i></p>
 
-## Requirements
+</div>
 
-- Python 3.7+
-- MongoDB instance
-- Required Python packages (see Installation section)
+---
 
-## Installation
+## ✨ Features
 
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd login-sys
-   ```
+- 🎨 **Beautiful Terminal UI** - Colorful, intuitive interface with ASCII art
+- 👥 **User Management** - Role-based access control (Admin/Developer)
+- ⏰ **Time Tracking** - Clock in/out with project assignment
+- 📊 **Project Management** - Create and organize projects by domain
+- 📈 **Data Export** - Export time logs, users, and projects to CSV
+- ☁️ **Cloud Integration** - MongoDB Atlas for scalable data storage
+- 🔐 **Secure** - Environment-based configuration for sensitive data
+- 🚀 **Easy Installation** - One-command setup with virtual environment
 
-2. **Create a virtual environment**:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+## 🎯 Quick Start
 
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Prerequisites
 
-4. **Set up environment variables**:
-   Copy the example environment file and configure it:
-   ```bash
-   cp .env.example .env
-   ```
-   Edit `.env` with your MongoDB connection string:
-   ```env
-   MONGO_URI=mongodb://localhost:27017/
-   # OR for MongoDB Atlas:
-   # MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/
-   ```
+- Python 3.7 or higher
+- MongoDB Atlas account (free tier available)
+- Terminal with color support
 
-5. **Initialize the system**:
-   ```bash
-   python setup.py
-   ```
-   This will create an initial admin user and sample project.
-
-## Usage
-
-### Running the Application
+### Installation
 
 ```bash
-source venv/bin/activate  # Activate virtual environment
+# Clone the repository
+git clone https://github.com/antrxc/aXtrLogs.git
+cd aXtrLogs
+
+# Set up virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your MongoDB Atlas connection string
+
+# Initialize the system
+python setup.py
+
+# Run the application
 python main.py
 ```
 
-The application displays the axtrLabs ASCII logo and presents role-based menus.
+### First Run
 
-### Admin Panel Features
-- **Add User**: Create new users with admin or dev roles
-- **Remove User**: Delete existing users from the system
-- **Add Project**: Create new projects for time tracking
-- **Export Data**: Export time logs, users, or projects to CSV
-- **View All Users**: Display all registered users
+1. **Admin Setup**: Create your first admin user during setup
+2. **Add Projects**: Use the admin panel to create projects
+3. **Add Developers**: Create user accounts for your team
+4. **Start Tracking**: Developers can now clock in/out for projects
 
-### Developer Panel Features
-- **Clock IN**: Start time tracking for a selected project
-- **Clock OUT**: End current time tracking session
-- **Project Switch**: View available projects and their details
-- **View My Logs**: See your recent time tracking history
-- **Back to Main Menu**: Return to role selection
+## 🖥️ Screenshots
+
+<details>
+<summary>Click to view screenshots</summary>
+
+### Main Menu
+```
+       __  __ _          _             _          
+  __ _ \ \/ /| |_  _ __ | |      __ _ | |__   ___ 
+ / _` | \  / | __|| '__|| |     / _` || '_ \ / __|
+| (_| | /  \ | |_ | |   | |___ | (_| || |_) |\__ \
+ \__,_|/_/\_\ \__||_|   |_____| \__,_||_.__/ |___/
+
+Welcome to aXtrLabs Time Tracking System
+🌐 Cloud-based system - Connecting to database...
+
+Select your role:
+> Admin Panel
+  Developer Panel  
+  Exit
+```
+
+### Admin Panel
+```
+Admin Panel:
+> Add User
+  Remove User
+  Add Project
+  Export Data CSV
+  View All Users
+  Back to Main Menu
+```
+
+### Developer Panel
+```
+Developer Panel:
+> Clock IN
+  Clock OUT
+  Project Switch
+  View My Logs
+  Back to Main Menu
+```
+
+</details>
+
+## 🏗️ Architecture
+
+```mermaid
+graph TB
+  A[Terminal Client] --> B[Obsy Python App]
+  B --> C[MongoDB Atlas]
+  B --> D[CSV Export]
+  B --> E[Environment Config]
+    
+  subgraph "Application Layers"
+    F[Main Interface]
+    G[User Management]
+    H[Observation & Time Tracking]
+    I[Project Management]
+    J[Data Export]
+  end
+    
+  B --> F
+  F --> G
+  F --> H
+  F --> I
+  F --> J
+```
+
+## 📁 Project Structure
+
+```
+obsy/
+├── 📁 commands/           # Command modules
+│   ├── clock.py          # Time tracking functionality
+│   ├── export.py         # Data export utilities
+│   └── rbac.py           # Role-based access control
+├── 📁 db/                # Database layer
+│   ├── connection.py     # MongoDB connection management
+│   └── model.py          # Data models and CRUD operations
+├── 📁 utils/             # Utility functions
+├── 📄 main.py            # Application entry point
+├── 📄 setup.py           # System initialization
+├── 📄 requirements.txt   # Python dependencies
+├── 📄 .env.example       # Environment template
+└── 📄 README.md          # This file
+```
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+# MongoDB Atlas Configuration
+MONGO_USERNAME=your_username
+MONGO_PASSWORD=your_password
+MONGO_CLUSTER_URL=cluster0.xxxxx.mongodb.net
+MONGO_DATABASE=obsy
+
+# Application Settings
+APP_NAME=Obsy - Observe your crowd
+APP_VERSION=1.0.0
+DEBUG=false
+```
 
 ### Database Schema
 
-#### User Collection
+#### Collections
+
+| Collection | Description |
+|------------|-------------|
+| `users` | User accounts with roles |
+| `projects` | Project definitions and metadata |
+| `clock_logs` | Time tracking entries |
+
+#### User Schema
 ```json
 {
+  "_id": "ObjectId",
   "name": "John Doe",
-  "userID": "unique_user_id",
-  "email": "john@example.com",
-  "role": "employee|manager|admin"
+  "userID": "john.doe",
+  "email": "john@company.com",
+  "role": "dev"
 }
 ```
 
-#### Time Logs Collection
+#### Project Schema
 ```json
 {
-  "userID": "unique_user_id",
-  "clockIN": "2025-07-28T09:00:00",
-  "clockOUT": "2025-07-28T17:00:00",
-  "date": "2025-07-28"
+  "_id": "ObjectId",
+  "name": "Website Redesign",
+  "domain": "Frontend Development",
+  "hours": 120,
+  "status": "active"
 }
 ```
 
-## Features in Detail
+#### Clock Log Schema
+```json
+{
+  "_id": "ObjectId",
+  "userID": "john.doe",
+  "clockIN": "2025-08-07T09:00:00Z",
+  "clockOUT": "2025-08-07T17:00:00Z",
+  "date": "2025-08-07",
+  "project": "Website Redesign"
+}
+```
 
-### Clock In/Out System
-- Prevents duplicate clock-in entries for the same date
-- Stores timestamp in ISO format
-- Links entries to specific user IDs
+## 🎛️ Usage Guide
 
-### User Management
-- Support for three role types: Admin, Employee, Manager
-- User validation to prevent duplicate user IDs
-- MongoDB integration for persistent storage
+### For Administrators
 
-### Terminal Interface
-- Colorful ASCII art banner
-- Interactive menu navigation
-- Real-time timestamp display
+<details>
+<summary>Admin Operations</summary>
 
-## Development Status
+#### Adding Users
+```bash
+# Select Admin Panel > Add User
+Name: Jane Smith
+User ID: jane.smith
+Email: jane@company.com
+Role: dev
+```
 
-✅ **Project is now COMPLETE and fully functional!**
+#### Creating Projects
+```bash
+# Select Admin Panel > Add Project
+Project Name: Mobile App
+Project Domain: Mobile Development
+```
 
-### ✅ Completed Features
-- ✅ **Terminal Interface**: Beautiful ASCII art and colorful menus
-- ✅ **User Management**: Add/remove users with role validation (Admin/Dev)
-- ✅ **Time Tracking**: Complete clock in/out system with project assignment
-- ✅ **Project Management**: Create and manage projects with status tracking
-- ✅ **Data Export**: Export time logs, users, and projects to CSV format
-- ✅ **Role-Based Access**: Admin and Developer panels with appropriate permissions
-- ✅ **MongoDB Integration**: Full database operations with proper error handling
-- ✅ **Data Validation**: Prevents duplicate entries and validates user inputs
-- ✅ **Setup Script**: Automated initial system setup with admin user creation
-- ✅ **Virtual Environment**: Proper Python environment management
-- ✅ **Error Handling**: Comprehensive validation and user feedback
-- ✅ **Time Calculation**: Automatic work hours calculation in exports
+#### Exporting Data
+```bash
+# Select Admin Panel > Export Data CSV
+- Export Time Logs (with calculated hours)
+- Export Users (with roles and contact info)
+- Export Projects (with status and total hours)
+- Export All (comprehensive report)
+```
 
-### 🎯 Key Improvements Made
-- **Complete Menu System**: All menu options now fully implemented
-- **Enhanced Export**: Multiple export formats with calculated hours
-- **Better UX**: Colored output, clear feedback, and intuitive navigation
-- **Robust Error Handling**: Graceful handling of edge cases
-- **Proper Architecture**: Clean separation of concerns across modules
-- **Production Ready**: Setup script, virtual environment, and proper dependencies
+</details>
 
-## Contributing
+### For Developers
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Create a Pull Request
+<details>
+<summary>Developer Operations</summary>
 
-## Configuration
+#### Clocking In
+1. Select "Developer Panel"
+2. Enter your User ID
+3. Choose "Clock IN"
+4. Select the project you're working on
 
-### Environment Variables
-- `MONGO_URI`: MongoDB connection string (default: mongodb://localhost:27017/)
+#### Clocking Out
+1. Choose "Clock OUT" from the developer menu
+2. System automatically calculates work duration
 
-### Database Configuration
-- Database name: `aXtr-Logs`
-- Collections:
-  - `TimeLogs`: Employee time tracking data
-  - `User-table`: User information and roles
+#### Viewing Logs
+- See your recent time entries
+- Review work patterns and project distribution
 
-## License [subject to change]
+</details>
 
-MIT License
+## 🤝 Contributing
 
-Copyright (c) [year] [fullname]
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+### Development Setup
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+```bash
+# Fork the repository and clone your fork
+git clone https://github.com/yourusername/aXtrLogs.git
+cd aXtrLogs
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+# Create a feature branch
+git checkout -b feature/amazing-feature
 
-## Support
+# Set up development environment
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install -r requirements-dev.txt  # Development dependencies
 
-For support or questions, please contact the axtrLabs development team.
+# Run tests
+python -m pytest
+
+# Format code
+black .
+flake8 .
+
+# Commit your changes
+git commit -m "Add amazing feature"
+git push origin feature/amazing-feature
+```
+
+### Code Style
+
+- Follow [PEP 8](https://pep8.org/) guidelines
+- Use [Black](https://github.com/psf/black) for code formatting
+- Add type hints where appropriate
+- Write docstrings for functions and classes
+- Add tests for new features
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+python -m pytest
+
+# Run with coverage
+python -m pytest --cov=.
+
+# Run specific test file
+python -m pytest tests/test_models.py
+```
+
+## 📊 Roadmap
+
+- [ ] **v1.1**: Web dashboard for admin operations
+- [ ] **v1.2**: Mobile app for time tracking
+- [ ] **v1.3**: Advanced reporting and analytics
+- [ ] **v1.4**: Integration with popular project management tools
+- [ ] **v1.5**: Multi-company support
+- [ ] **v2.0**: Microservices architecture
+
+## 🐛 Bug Reports & Feature Requests
+
+Found a bug? Have a feature idea? We'd love to hear about it!
+
+- 🐛 [Report a Bug](https://github.com/antrxc/aXtrLogs/issues/new?template=bug_report.md)
+- 💡 [Request a Feature](https://github.com/antrxc/aXtrLogs/issues/new?template=feature_request.md)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [MongoDB Atlas](https://cloud.mongodb.com/) for cloud database hosting
+- [Python](https://python.org/) for the amazing programming language
+- [Colorama](https://github.com/tartley/colorama) for cross-platform terminal colors
+- [Art](https://github.com/sepandhaghighi/art) for ASCII art generation
+- [Simple Term Menu](https://github.com/IngoMeyer441/simple-term-menu) for beautiful terminal menus
+
+## 📧 Support
+
+- 📚 [Documentation](https://github.com/antrxc/obsy/wiki)
+- 💬 [Discussions](https://github.com/antrxc/obsy/discussions)
+- 📧 Email: support@obsy.dev
+
+---
+
+<div align="center">
+
+**[⬆ Back to Top](#-obsy)**
+
+Made with ❤️ by [Obsy](https://github.com/antrxc)
+
+[![Star this repo](https://img.shields.io/github/stars/antrxc/obsy?style=social)](https://github.com/antrxc/obsy)
+[![Follow on GitHub](https://img.shields.io/github/followers/antrxc?style=social)](https://github.com/antrxc)
+
+</div>
