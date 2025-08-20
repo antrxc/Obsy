@@ -341,7 +341,7 @@ python -m pytest tests/test_models.py
 
 ## 🐛 Bug Reports & Feature Requests
 
-Found a bug? Have a feature idea? We'd love toObsyr about it!
+Found a bug? Have a feature idea? We'd love to hear about it!
 Obsy
 - 🐛 [Report a Bug](https://github.com/antrxc/obsy/issues/new?template=bug_report.md)
 - 💡 [Request a Feature](https://github.com/antrxc/obsy/issues/new?template=feature_request.md)
