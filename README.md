@@ -7,16 +7,10 @@
 <p align="center">
 <b>A modern, terminal-based employee time tracking and observation system with cloud integration</b><br>
 <br>
-[![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://python.org/downloads/)
-[![MongoDB](https://img.shields.io/badge/database-MongoDB-green.svg)](https://mongodb.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 </p>
 
-<p align="center">
-<img src="https://via.placeholder.com/800x400/1a1a1a/00ff00?text=Obsy+Demo" alt="Obsy Demo"/>
-</p>
+
 
 <p align="center"><i>Beautiful terminal interface for observing and tracking your team</i></p>
 
@@ -46,9 +40,10 @@
 ### Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/antrxc/aXtrLogs.git
-cd aXtrLogs
+
+# Clone the repositoryObsy
+gitObsyne https://github.com/antrxc/obsy.git
+cd obsy
 
 # Set up virtual environment
 python3 -m venv venv
@@ -88,7 +83,7 @@ python main.py
 | (_| | /  \ | |_ | |   | |___ | (_| || |_) |\__ \
  \__,_|/_/\_\ \__||_|   |_____| \__,_||_.__/ |___/
 
-Welcome to aXtrLabs Time Tracking System
+Welcome to Obsy Time Tracking System
 🌐 Cloud-based system - Connecting to database...
 
 Select your role:
@@ -288,9 +283,10 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ### Development Setup
 
 ```bash
-# Fork the repository and clone your fork
-git clone https://github.com/yourusername/aXtrLogs.git
-cd aXtrLogs
+Obsy
+# FObsythe repository and clone your fork
+git clone https://github.com/yourusername/obsy.git
+cd obsy
 
 # Create a feature branch
 git checkout -b feature/amazing-feature
@@ -345,10 +341,10 @@ python -m pytest tests/test_models.py
 
 ## 🐛 Bug Reports & Feature Requests
 
-Found a bug? Have a feature idea? We'd love to hear about it!
-
-- 🐛 [Report a Bug](https://github.com/antrxc/aXtrLogs/issues/new?template=bug_report.md)
-- 💡 [Request a Feature](https://github.com/antrxc/aXtrLogs/issues/new?template=feature_request.md)
+Found a bug? Have a feature idea? We'd love toObsyr about it!
+Obsy
+- 🐛 [Report a Bug](https://github.com/antrxc/obsy/issues/new?template=bug_report.md)
+- 💡 [Request a Feature](https://github.com/antrxc/obsy/issues/new?template=feature_request.md)
 
 ## 📄 License
 

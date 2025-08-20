@@ -18,7 +18,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: aXtrLogs version
+      label: ObsyLogs version
   - type: textarea
     id: logs
     attributes:

@@ -3,7 +3,7 @@ Loads .env.
 Creates a single MongoClient instance (singleton pattern).
 Defines and exposes:
 client
-db = client["aXtr-Logs"]
+db = client["Obsy-Logs"]
 UserData = db["User-table"]
 ProjectData = db["Project-Table"]
 ClockData = db["Clock-Logs"]
@@ -23,7 +23,7 @@ try:
     client = MongoClient(MONGO_URI)
     client.admin.command('ping')
     
-    db = client["aXtr-Logs"]
+    db = client["Obsy-Logs"]
     UserData = db["User-Table"]
     ProjectData = db["Project-Table"]
     ClockData = db["Clock-Logs"]

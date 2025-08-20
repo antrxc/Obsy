@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Setup script for aXtrLabs Login System
+Setup script for Obsy Login System
 Creates initial admin user and sample project
 """
 
@@ -10,7 +10,7 @@ from colorama import Fore, Style
 
 def setup_initial_data():
     """Setup initial admin user and sample project"""
-    print(f"{Fore.CYAN}=== aXtrLabs Login System Setup ==={Style.RESET_ALL}")
+    print(f"{Fore.CYAN}=== Obsy Login System Setup ==={Style.RESET_ALL}")
     
     # Check if admin user already exists
     admin_exists = UserData.find_one({"role": "admin"})

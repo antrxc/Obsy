@@ -1,4 +1,4 @@
-# 🚀 Quick Start Guide - aXtrLabs Login System
+# 🚀 Quick Start Guide - Obsy Login System
 
 ## Prerequisites
 - Python 3.7+

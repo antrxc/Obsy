@@ -27,9 +27,9 @@ Pull requests are the best way to propose changes to the codebase. We actively w
 
 In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern. The project is now called Obsy - Observe your crowd.
 
-## Report bugs using GitHub's [issues](https://github.com/antrxc/aXtrLogs/issues)
+## Report bugs using GitHub's [issues](https://github.com/antrxc/Obsy/issues)
 
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/antrxc/aXtrLogs/issues/new); it's that easy!
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/antrxc/Obsy/issues/new); it's that easy!
 
 **Great Bug Reports** tend to have:
 
@@ -53,8 +53,8 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 
 ```bash
 # Clone your fork
-git clone https://github.com/yourusername/aXtrLogs.git
-cd aXtrLogs
+git clone https://github.com/yourusername/Obsy.git
+cd Obsy
 
 # Set up virtual environment
 python3 -m venv venv

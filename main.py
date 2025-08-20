@@ -65,8 +65,8 @@ def export_to_csv():
         return False
 
 def main():
-    tprint("aXtrLabs")
-    print(f"{Fore.CYAN}Welcome to aXtrLabs Time Tracking System{Style.RESET_ALL}")
+    tprint("Obsy")
+    print(f"{Fore.CYAN}Welcome to Obsy Time Tracking System{Style.RESET_ALL}")
     print(f"Current time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
     
     while True:
@@ -240,7 +240,7 @@ def main():
                             break
                             
             case 2:  # Exit
-                print(f"\n{Fore.GREEN}Thank you for using aXtrLabs Time Tracking System!{Style.RESET_ALL}")
+                print(f"\n{Fore.GREEN}Thank you for using Obsy Time Tracking System!{Style.RESET_ALL}")
                 break
 
 if __name__ == "__main__":
